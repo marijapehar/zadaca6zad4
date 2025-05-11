@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Opis ocjene</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #rezultat {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Unesite ocjenu (1-5)</h2>
+    <form onsubmit="prikaziOpisOcjene(event)">
+        <input type="text" id="ocjena" placeholder="npr. 3" />
+        <button type="submit">Prikaži opis</button>
+    </form>
+
+    <p id="rezultat"></p>
+
+    <script>
+        function prikaziOpisOcjene(event) {
+            event.preventDefault(); 
+            const vrijednost = document.getElementById("ocjena").value.trim();
+            const broj = parseInt(vrijednost);
+            const rezultat = document.getElementById("rezultat");
+
+            let opis = "";
+
+            switch (broj) {
+                case 1:
+                    opis = "Ocjena 1 – nedovoljan";
+                    break;
+                case 2:
+                    opis = "Ocjena 2 – dovoljan";
+                    break;
+                case 3:
+                    opis = "Ocjena 3 – dobar";
+                    break;
+                case 4:
+                    opis = "Ocjena 4 – vrlo dobar";
+                    break;
+                case 5:
+                    opis = "Ocjena 5 – odličan";
+                    break;
+                default:
+                    opis = "Unesite ispravnu ocjenu od 1 do 5.";
+            }
+
+            rezultat.textContent = opis;
+        }
+    </script>
+
+</body>
+</html>
